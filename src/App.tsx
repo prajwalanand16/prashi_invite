@@ -249,7 +249,7 @@ export default function App() {
             className="flex flex-col items-center"
           >
             <p className="font-serif text-xl md:text-3xl text-[#b8860b] italic mb-8 tracking-wide">
-              Are getting married
+              We Are getting married
             </p>
             <div className="w-px h-24 bg-gradient-to-b from-[#d4af37] to-transparent mb-6" />
             <motion.div
@@ -321,7 +321,7 @@ export default function App() {
             title="Wedding"
             date="19th June 2026"
             time="Friday | 6:00 PM"
-            description="The Celebration: Baraat at 6 PM"
+            description="The Celebration: Baraat"
             index={2}
           />
         </div>
