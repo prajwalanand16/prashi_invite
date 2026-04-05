@@ -212,15 +212,12 @@ export default function App() {
           transition={{ duration: 3, ease: "easeOut" }}
           className="absolute inset-0"
         >
-          <video 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
+          <img 
+            src="assets/images/A.JPG" 
+            alt="Prajwal and Shiwangi"
             className="w-full h-full object-cover"
-          >
-            <source src="assets/video/background_vid.mp4" type="video/mp4" />
-          </video>
+            referrerPolicy="no-referrer"
+          />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#fdfcf0]/40 via-transparent to-[#fdfcf0]/80" />
         
@@ -340,13 +337,34 @@ export default function App() {
           <Gallery 
             title="Our Moments"
             images={[
-              'assets/images/2X1A5224.JPG',
-              'assets/images/2X1A5261.JPG',
-              'assets/images/2X1A5273.JPG',
-              'assets/images/2X1A5288.JPG',
-              'assets/images/2X1A5295.JPG'
+              'assets/images/1.JPG',
+              'assets/images/2.JPG',
+              'assets/images/3.JPG',
+              'assets/images/4.JPG',
+              'assets/images/5.JPG',
+              'assets/images/6.JPG'
             ]}
           />
+          
+          <div className="mt-32">
+            <div className="text-center mb-16">
+              <h2 className="font-serif text-4xl md:text-6xl text-[#2d2d2d] mb-4">Engagement Ceremony</h2>
+              <div className="w-16 h-1 bg-[#d4af37] mx-auto rounded-full" />
+            </div>
+            <Gallery 
+              title="Engagement Ceremony"
+              images={[
+                'assets/images/E1.JPG',
+                'assets/images/E2.JPG',
+                'assets/images/E3.JPG',
+                'assets/images/E4.JPG',
+                'assets/images/E5.JPG',
+                'assets/images/E6.JPG',
+                'assets/images/E7.JPG',
+                'assets/images/E8.JPG'
+              ]}
+            />
+          </div>
           
           <div className="mt-32">
             <div className="text-center mb-16">
@@ -356,9 +374,17 @@ export default function App() {
             <Gallery 
               title="Family"
               images={[
-                'assets/images/2X1A4878.JPG',
-                'assets/images/2X1A5064.JPG',
-                'assets/images/2X1A5279.JPG'
+                'assets/images/F1.JPG',
+                'assets/images/F2.JPG',
+                'assets/images/F3.JPG',
+                'assets/images/F4.JPG',
+                'assets/images/F5.JPG',
+                'assets/images/F6.JPG',
+                'assets/images/F7.JPG',
+                'assets/images/F8.JPG',
+                'assets/images/F9.JPG',
+                'assets/images/F10.JPG',
+                'assets/images/F11.JPG'
               ]}
             />
           </div>
