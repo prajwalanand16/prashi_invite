@@ -50,23 +50,34 @@ const Gallery = ({ title, images }: { title: string; images: string[] }) => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto relative group px-4 md:px-12">
-      <div className="overflow-hidden rounded-3xl shadow-2xl border-4 border-white bg-white/20 backdrop-blur-sm">
+    <div className="w-full max-w-6xl mx-auto relative group px-2 md:px-12">
+      <div className="overflow-hidden rounded-3xl shadow-2xl border-4 border-white bg-black/5 backdrop-blur-sm">
         <motion.div 
           className="flex"
           animate={{ x: `-${currentIndex * 100}%` }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: "spring", stiffness: 250, damping: 30 }}
         >
           {images.map((img, idx) => (
-            <div key={idx} className="min-w-full h-[400px] md:h-[600px] relative">
+            <div key={idx} className="min-w-full h-[500px] md:h-[750px] relative flex items-center justify-center overflow-hidden">
+              {/* Blurred Background for mixed aspect ratios (Portrait/Landscape) */}
+              <img
+                src={img}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover blur-3xl scale-110 opacity-40"
+                aria-hidden="true"
+              />
+              
+              {/* Main Image - Set to object-contain so nothing is cut off */}
               <img
                 src={img}
                 alt={`${title} ${idx + 1}`}
-                className="w-full h-full object-cover"
+                className="relative z-10 w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex items-end justify-center pb-12">
-                <p className="font-serif text-2xl md:text-3xl text-white italic tracking-widest drop-shadow-lg">
+              
+              {/* Overlay Text */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-center pb-12 z-20">
+                <p className="font-serif text-2xl md:text-4xl text-white italic tracking-widest drop-shadow-xl px-6 text-center">
                   {title}
                 </p>
               </div>
@@ -75,28 +86,31 @@ const Gallery = ({ title, images }: { title: string; images: string[] }) => {
         </motion.div>
       </div>
       
+      {/* Navigation Arrows */}
       <button 
         onClick={prev} 
-        className="absolute left-0 md:left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-md p-4 rounded-full text-[#b8860b] transition-all shadow-xl z-10 hover:scale-110 active:scale-95"
+        className="absolute left-4 md:left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-4 rounded-full text-[#b8860b] transition-all shadow-2xl z-30 hover:scale-110 active:scale-95"
       >
         <ChevronLeft className="w-8 h-8" />
       </button>
       <button 
         onClick={next} 
-        className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-md p-4 rounded-full text-[#b8860b] transition-all shadow-xl z-10 hover:scale-110 active:scale-95"
+        className="absolute right-4 md:right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-4 rounded-full text-[#b8860b] transition-all shadow-2xl z-30 hover:scale-110 active:scale-95"
       >
         <ChevronRight className="w-8 h-8" />
       </button>
 
       {/* Dots Indicator */}
-      <div className="flex justify-center gap-2 mt-6">
+      <div className="flex justify-center gap-3 mt-8">
         {images.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
             className={cn(
-              "w-2 h-2 rounded-full transition-all duration-300",
-              currentIndex === idx ? "bg-[#d4af37] w-8" : "bg-[#d4af37]/30 hover:bg-[#d4af37]/60"
+              "w-3 h-3 rounded-full transition-all duration-500",
+              currentIndex === idx 
+                ? "bg-[#d4af37] w-12 shadow-[0_0_10px_rgba(212,175,55,0.5)]" 
+                : "bg-[#d4af37]/20 hover:bg-[#d4af37]/50"
             )}
           />
         ))}
@@ -275,7 +289,7 @@ export default function App() {
             className="flex flex-col items-center"
           >
             <p className="font-serif text-xl md:text-3xl text-[#b8860b] italic mb-8 tracking-wide">
-              Are getting married
+              We Are getting married
             </p>
             <div className="w-px h-24 bg-gradient-to-b from-[#d4af37] to-transparent mb-6" />
             <motion.div
