@@ -213,7 +213,7 @@ export default function App() {
           className="absolute inset-0"
         >
           <img 
-            src="assets/images/A.JPG" 
+            src="images/A.JPG" 
             alt="Prajwal and Shiwangi"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -337,12 +337,12 @@ export default function App() {
           <Gallery 
             title="Our Moments"
             images={[
-              'assets/images/1.JPG',
-              'assets/images/2.JPG',
-              'assets/images/3.JPG',
-              'assets/images/4.JPG',
-              'assets/images/5.JPG',
-              'assets/images/6.JPG'
+              'images/1.JPG',
+              'images/2.JPG',
+              'images/3.JPG',
+              'images/4.JPG',
+              'images/5.JPG',
+              'images/6.JPG'
             ]}
           />
           
@@ -354,14 +354,14 @@ export default function App() {
             <Gallery 
               title="Engagement Ceremony"
               images={[
-                'assets/images/E1.JPG',
-                'assets/images/E2.JPG',
-                'assets/images/E3.JPG',
-                'assets/images/E4.JPG',
-                'assets/images/E5.JPG',
-                'assets/images/E6.JPG',
-                'assets/images/E7.JPG',
-                'assets/images/E8.JPG'
+                'images/E1.JPG',
+                'images/E2.JPG',
+                'images/E3.JPG',
+                'images/E4.JPG',
+                'images/E5.JPG',
+                'images/E6.JPG',
+                'images/E7.JPG',
+                'images/E8.JPG'
               ]}
             />
           </div>
@@ -374,17 +374,17 @@ export default function App() {
             <Gallery 
               title="Family"
               images={[
-                'assets/images/F1.JPG',
-                'assets/images/F2.JPG',
-                'assets/images/F3.JPG',
-                'assets/images/F4.JPG',
-                'assets/images/F5.JPG',
-                'assets/images/F6.JPG',
-                'assets/images/F7.JPG',
-                'assets/images/F8.JPG',
-                'assets/images/F9.JPG',
-                'assets/images/F10.JPG',
-                'assets/images/F11.JPG'
+                'images/F1.JPG',
+                'images/F2.JPG',
+                'images/F3.JPG',
+                'images/F4.JPG',
+                'images/F5.JPG',
+                'images/F6.JPG',
+                'images/F7.JPG',
+                'images/F8.JPG',
+                'images/F9.JPG',
+                'images/F10.JPG',
+                'images/F11.JPG'
               ]}
             />
           </div>
@@ -451,7 +451,7 @@ export default function App() {
 
       {/* Audio Element */}
       <audio ref={audioRef} loop>
-        <source src="assets/music/song.mp3" type="audio/mpeg" />
+        <source src="music/song.mp3" type="audio/mpeg" />
       </audio>
 
       {/* Music Toggle Button */}
