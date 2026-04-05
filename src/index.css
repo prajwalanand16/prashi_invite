@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400&display=swap');
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-cursive: "Great Vibes", cursive;
+}
+
+:root {
+  --primary: #d4af37; /* Royal Gold */
+  --secondary: #fdf5e6; /* Old Lace / Ivory */
+  --accent: #ff6b9d;
+}
+
+body {
+  background: #fdfcf0; /* Light Ivory */
+  color: #2d2d2d;
+  overflow-x: hidden;
+}
+
+/* Custom Animations */
+@keyframes heartbeat {
+  0%, 100% { transform: rotate(45deg) scale(1); }
+  50% { transform: rotate(45deg) scale(1.2); }
+}
+
+@keyframes floatUp {
+  0% {
+    bottom: -50px;
+    transform: translateX(0px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    bottom: 100vh;
+    transform: translateX(-50px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes bounceIcon {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.heart-animation {
+  animation: heartbeat 1.2s infinite;
+}
+
+.ripple-animation {
+  animation: ripple 1.5s ease-out infinite;
+}
+
+.bounce-icon {
+  animation: bounceIcon 2s infinite;
+}
+
+.royal-border {
+  border: 2px solid #d4af37;
+  position: relative;
+}
+
+.royal-border::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid #d4af37;
+  pointer-events: none;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
