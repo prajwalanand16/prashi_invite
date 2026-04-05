@@ -41,40 +41,66 @@ const EventCard = ({ icon: Icon, title, time, date, description, index = 0 }: an
 const Gallery = ({ title, images }: { title: string; images: string[] }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-
-  useEffect(() => {
-    const interval = setInterval(next, 5000);
-    return () => clearInterval(interval);
-  }, [images.length]);
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+  
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
-    <div className="w-full max-w-lg mx-auto overflow-hidden rounded-3xl shadow-2xl relative group border-4 border-white">
-      <div className="relative h-[400px] md:h-[500px]">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={currentIndex}
-            src={images[currentIndex]}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-center pb-10">
-          <p className="font-serif text-2xl text-white italic tracking-widest">Forever & Always</p>
-        </div>
+    <div className="w-full max-w-6xl mx-auto relative group px-4 md:px-12">
+      <div className="overflow-hidden rounded-3xl shadow-2xl border-4 border-white bg-white/20 backdrop-blur-sm">
+        <motion.div 
+          className="flex"
+          animate={{ x: `-${currentIndex * 100}%` }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
+          {images.map((img, idx) => (
+            <div key={idx} className="min-w-full h-[400px] md:h-[600px] relative">
+              <img
+                src={img}
+                alt={`${title} ${idx + 1}`}
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex items-end justify-center pb-12">
+                <p className="font-serif text-2xl md:text-3xl text-white italic tracking-widest drop-shadow-lg">
+                  {title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
       </div>
       
-      <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 backdrop-blur-md p-3 rounded-full text-gray-800 transition-all opacity-0 group-hover:opacity-100 shadow-md">
-        <ChevronLeft className="w-6 h-6" />
+      <button 
+        onClick={prev} 
+        className="absolute left-0 md:left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-md p-4 rounded-full text-[#b8860b] transition-all shadow-xl z-10 hover:scale-110 active:scale-95"
+      >
+        <ChevronLeft className="w-8 h-8" />
       </button>
-      <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/40 hover:bg-white/60 backdrop-blur-md p-3 rounded-full text-gray-800 transition-all opacity-0 group-hover:opacity-100 shadow-md">
-        <ChevronRight className="w-6 h-6" />
+      <button 
+        onClick={next} 
+        className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white backdrop-blur-md p-4 rounded-full text-[#b8860b] transition-all shadow-xl z-10 hover:scale-110 active:scale-95"
+      >
+        <ChevronRight className="w-8 h-8" />
       </button>
+
+      {/* Dots Indicator */}
+      <div className="flex justify-center gap-2 mt-6">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentIndex(idx)}
+            className={cn(
+              "w-2 h-2 rounded-full transition-all duration-300",
+              currentIndex === idx ? "bg-[#d4af37] w-8" : "bg-[#d4af37]/30 hover:bg-[#d4af37]/60"
+            )}
+          />
+        ))}
+      </div>
     </div>
   );
 };
@@ -249,7 +275,7 @@ export default function App() {
             className="flex flex-col items-center"
           >
             <p className="font-serif text-xl md:text-3xl text-[#b8860b] italic mb-8 tracking-wide">
-              We Are getting married
+              Are getting married
             </p>
             <div className="w-px h-24 bg-gradient-to-b from-[#d4af37] to-transparent mb-6" />
             <motion.div
@@ -321,7 +347,7 @@ export default function App() {
             title="Wedding"
             date="19th June 2026"
             time="Friday | 6:00 PM"
-            description="The Celebration: Baraat"
+            description="The Celebration: Baraat at 6 PM"
             index={2}
           />
         </div>
